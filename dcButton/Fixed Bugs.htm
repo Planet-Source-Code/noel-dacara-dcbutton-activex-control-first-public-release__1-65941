@@ -1,0 +1,267 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>User Comments and Answers</title>
+<style type="text/css">
+<!--
+body,td,th {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+.style1 {color: #FFFFFF}
+-->
+</style>
+</head>
+<body>
+<table width="100%" border="1" align="center" cellpadding="5" cellspacing="0" bordercolor="#FFFFFF">
+  <tr>
+    <td bgcolor="#0000FF"><span class="style1">This file contains the messages from different users dated 07/13/2006 to 07/17/2006 and my answers to everyone of them. Please take time reading, thanks :)</span></td>
+  </tr>
+  <tr>
+    <td><p><strong>7/13/2006 2:07:15 PM: Juan Carlos San Rom&aacute;n<br>
+        Very nice control. 5 from me.<br>
+        I have found an error in sub PolylineEx<br>
+&quot;subscript is out of range&quot;, because Points=nothing, it is at the beginning, I have put &quot;On error resume next&quot; and it works fine.</strong></p></td>
+  </tr>
+  <tr>
+    <td><p>Fixed (Hopefully..) using my way first. Please test it for me, coz' I really don't know when this occurs.<br>
+        But if this error still occurs, the alternate solution would be placing the &quot;On Error Resume Next&quot; instruction on the procedure at the moment as Carlos' suggested.<br>
+        And please kindly inform me when or how this error occurs coz' I rarely get this error and seems to appear only on some systems, coz' it does not appear on mine :)</p></td>
+  </tr>
+  <tr>
+    <td><p><strong>7/13/2006 2:44:09 PM: Riccardo Cohen<br>
+        Great Code.. Would be nice if it could support Alpha Icons, but my 5 globes! Keep up the good work!</strong></p></td>
+  </tr>
+  <tr>
+    <td><p>So far I don't have any idea on how to implement this feature because as we know VB's StdPicture itself doesn't support this and I can't think of any other solution for now. Any idea? :)</p></td>
+  </tr>
+  <tr>
+    <td><p><strong>7/13/2006 3:53:04 PM: Ruturaj<br>
+        Looks gr8! Can the Crystal style be made smooth on edge?</strong></p></td>
+  </tr>
+  <tr>
+    <td>It's a bit complicated but I think I can do that. But...it may take an additional resource &amp; time from the system because it will still have to get the image behind the control inorder to blend it with, which I think is the only way we can make the edges real smooth.<br>
+      Another way, like what I have currently updated to the control is to remove the focus border showing the control in focus. It should look good now but not that good. The downside is that you can no longer determine (visually...) what control is currently in focus unless you remember it.<br>
+      Got any other idea? or suggestion? Please tell me, I would be glad to try it :)</td>
+  </tr>
+  <tr>
+    <td><strong>7/13/2006 5:18:01 PM: Jefe - Boss<br>
+      ONE OF THE BEST I'VE EVER SEEN! No caps lock on, holding down the shift key to express gratitude for the sharing.<br>
+      An all around excellent control.<br>
+      The first I have downloaded from PSC that I played with for about 30 minutes and did not encounter an error with! Excellent work!</strong></td>
+  </tr>
+  <tr>
+    <td>I just don't understand the &quot;No caps lock on, holding down the shift key&quot; statement, is that a suggestion, comment, or a bug report?<br>
+      The control seems to be working fine in that part though, and hey, thanks for playing with this hehe :)</td>
+  </tr>
+  <tr>
+    <td><strong>7/13/2006 10:35:10 PM: Steppenwolfe<br>
+      Code is clean, and button is fast, good job!<br>
+      Suggestion: if xp, add option to get users theme and apply the theme choice automatically. </strong></td>
+  </tr>
+  <tr>
+    <td>Request granted but will only be available on the next version I think :(<br>
+      I'll be soon working for this...just giving myself time to rest for now.</td>
+  </tr>
+  <tr>
+    <td><strong>7/13/2006 11:46:15 PM: tanaya<br>
+      good ctl </strong></td>
+  </tr>
+  <tr>
+    <td>thanks.</td>
+  </tr>
+  <tr>
+    <td><strong>7/14/2006 3:09:16 AM: Mark<br>
+      Great work! Thanks for sharing.</strong></td>
+  </tr>
+  <tr>
+    <td>oh thanks, I'll be glad to share for more in the future :) </td>
+  </tr>
+  <tr>
+    <td><strong>7/14/2006 3:46:36 AM: Jon Parker<br>
+      Works great until you start changing the font size.<br>
+      Try Times New Roman/Bold/Size 14 with a picture set to right center, to see what I mean.</strong></td>
+  </tr>
+  <tr>
+    <td>So I see the problem, but only if the text/caption is long enough to exceed the control's boundary/size.<br>
+      What happens here is that the text/caption is still being centered between the picture and the edge of the button.<br>
+      So I got it now, the text should not overlap the picture and this is what it happened here.<br>
+      Sorry for the mistake, it's already been fixed and should work okay now.</td>
+  </tr>
+  <tr>
+    <td><strong>7/14/2006 5:28:56 AM: Soorya<br>
+      Excellent !<br>
+      The big worry about these sort of buttons are consumes system resource. Lack of intelligence. I mean drawing should not happen for hidden/minimized forms.<br>
+      Try 100 buttons in a form check loading and unloading speed. If it is still cool.. That is it..<br>
+      Hope this control will pass the test.<br>
+      All the best.</strong></td>
+  </tr>
+  <tr>
+    <td><p>Was it consuming more system resource? Hmm don't think so :)<br>
+        Was it drawing on hidden/minimized forms? Yes it should! Why? I'm not sure but it should.<br>
+        Take this for an example, Have you ever used the LOAD command?<br>
+        LOAD FORM1 instruction loads &amp; draws FORM1 on memory so when the time you call FORM1.Show, the form shows immediately.<br>
+        Got the point? The technique is usually used for implementing splash screens to load the main screen in background.<br>
+        Well...that should explain why controls must allow to redraw even when their parent form/window is hidden or minimized.<br>
+        And about the 100 button statement, well all custom buttons/controls do have/experience this disadvantage I think and unfortunately there is only one solution to the issue for me, don't use it!<br>
+        Instead, just stick using the standard command button your whole life hehe :) peace.</p></td>
+  </tr>
+  <tr>
+    <td><strong>7/14/2006 5:30:59 AM: solarding<br>
+      the first comment I give in the web, although have been watching for a while.<br>
+      your work is fantastic, just a little bugs to be fixed. like the &quot;subscript out of range&quot; as Juan mentioned.</strong></td>
+  </tr>
+  <tr>
+    <td>Okay, thanks for making time to give me your comments, I appreciate it.<br>
+      And about the little bugs, don't worry it's now fixed.</td>
+  </tr>
+  <tr>
+    <td><strong>7/14/2006 7:16:44 AM: Option Explicit<br>
+      A very thorough job designing this, with easy-to-read, well-documented code.<br>
+      Whatever tiny issues there may be with this, you've done an outstanding job. *****</strong></td>
+  </tr>
+  <tr>
+    <td>Wow, your message is the one I like most among all I have :) thanks. I'll be glad to share for more after this. </td>
+  </tr>
+  <tr>
+    <td><strong>7/14/2006 7:47:48 AM: Soorya<br>
+      I tested this control..<br>
+      Great and fast..<br>
+      But very often I get Runtime error 9 'Subscript out of range'<br>
+      Pls. check it</strong></td>
+  </tr>
+  <tr>
+    <td>Yes I have, it should be okay by now. Please check it also if I made another mistake again, thanks :) </td>
+  </tr>
+  <tr>
+    <td><p><strong>7/14/2006 9:25:56 AM: Unknown <br>
+        very good </strong></p></td>
+  </tr>
+  <tr>
+    <td>thank u very much. </td>
+  </tr>
+  <tr>
+    <td><strong>7/14/2006 10:46:32 AM: Eriv<br>
+      Excelente.</strong></td>
+  </tr>
+  <tr>
+    <td>thanks.</td>
+  </tr>
+  <tr>
+    <td><strong>7/15/2006 1:19:23 PM: Thomas Brustbauer<br>
+      1. Thank you - great!<br>
+      2. You asked for suggestions: a drop down button segment right to normal button would be great - as seen in Save/Open dialog of Office 2003</strong></td>
+  </tr>
+  <tr>
+    <td>This would be quite an easy job if I would only be updating one button/control but now I have 12 and still wanted to add for more, would be very tiring but I'll try, I will :)<br>
+      I got the idea before but I chose to implement the button shape feature instead which seems to be successful.</td>
+  </tr>
+  <tr>
+    <td><strong>7/15/2006 2:12:00 PM: ubt1<br>
+      When used within another UserControl this line gives error 438:<br>
+      If (UserControl.Parent.MDIChild) Then ' Detect activation of parent form</strong></td>
+  </tr>
+  <tr>
+    <td>Fixed but unfixed. :) The problem you specified should have been fixed but another problem occurs right before my very eyes. <br>
+      While I was fixing this problem, it went fine already but another serious problem was underway waiting for me, as I close the MDI form it crashes like hell!<br>
+      Please read <a href="Unfixed%20Bug.htm">here</a> for more information about this unfixed crash problem.</td>
+  </tr>
+  <tr>
+    <td><strong>7/15/2006 2:20:13 PM: ubt1<br>
+      When used as type in a var declaration like Private x as dcButton, x does not have properties Left, Height, Width etc. - really intended?</strong></td>
+  </tr>
+  <tr>
+    <td>Huh? You may have placed the declaration inside a procedure? Ex. Form_Load()<br>
+      Try using DIM instead. Ex. Dim x as dcButton, it should work fine now.<br>
+      You cannot use PRIVATE for declaring an object/variable inside a procedure.<br>
+      But if you insist, declare it outside a procedure a.k.a form wide declaration.</td>
+  </tr>
+  <tr>
+    <td><strong>7/16/2006 3:18:03 AM: Soorya<br>
+      more work to be done in this control to fix lot of bug in it. when i tried in my application, my app got hung up.<br>
+      pls. put some more effort to fix the minor bugs.<br>
+      But I love this button, It take very less GDI Objects and light weight.<br>
+      Thanks for the submission</strong></td>
+  </tr>
+  <tr>
+    <td>Hung up when? or what kind of circumstances? Does it crash likely as describe by Fazeel's bug problem below, if so then maybe it's fixed now? Can you try it again now? Give me the details later if it still hangs up, thanks. </td>
+  </tr>
+  <tr>
+    <td><strong>7/16/2006 5:30:02 AM: Fazeel Amjad Khan<br>
+      nice user control 5 globes from me.<br>
+      Jaun Carlos mention the right thing to do with the control.<br>
+      there is another problem. if we put the form unload code i.e. unload me.<br>
+      Applicaton crashes and give an error generated by windows error reporting service. What to do with this problem. </strong></td>
+  </tr>
+  <tr>
+    <td>Yeah at last a crash problem, this is what I've been waiting for as a bug.<br>
+      Well, my test works fine as I unload the forms using other controls.<br>
+      The crash problem raises up only when the instruction is called from the control's events (Ex. dcButton1_Click())...<br>
+      Now its fixed for good :) hopefully...</td>
+  </tr>
+  <tr>
+    <td><strong>7/17/2006 3:19:05 AM: Soorya<br>
+      hi Noel A. Dacara<br>
+      Most of my Video Projects are with &gt;50 buttons in single form. Like Mini Control Panel.<br>
+      Some time I prefer Buttons than Menus. Which is more convenient for New PC Users.<br>
+      I have very bad experience with most of these buttons. But I like urs. It is very fast and taking less resource.<br>
+      But I could not use it, because of many bugs.<br>
+      Thanks again for sharing.</strong></td>
+  </tr>
+  <tr>
+    <td>Yah you're right, most new pc users prefer buttons than menus.<br>
+      Don't worry I'll be trying my best to make this control solid proof and free from bugs as possible because I'm gonna use this also on my own applications.<br>
+      Anyone can help me with this, especially you, but finding for bugs and more suggestions is what I prefer most. Thanks again. </td>
+  </tr>
+  <tr>
+    <td><strong>7/17/2006 4:05:13 AM: Goober Mpc<br>
+      Hi, very nice button control. 5 stars from me...<br>
+      A little modification could be made to the position of the Picture and the Text, when the Picture is on top of the text a space would be nice between the picture and text. It looks very cramped as it currently is.</strong></td>
+  </tr>
+  <tr>
+    <td>Yah, it should have, it has to. If you scan the CalculateRects procedure you will see that the picture and the text has been set to be at least 2px between each other, the problem here is only noticeable when button is small enough for the objects (text/picture) and its borders.<br>
+      It should work fine by now. Problem is explained earlier on the bug statement reported by Jon Parker.</td>
+  </tr>
+  <tr>
+    <td><strong>7/17/2006 7:40:35 AM: Riccardo Cohen<br>
+      To complete this project, it would be nice if you can implement option button properties...<br>
+      Regards Riccardo </strong></td>
+  </tr>
+  <tr>
+    <td>I'm currently working on this now, still having some difficulties though.<br>
+      A couple of bug fixes more and this feature would be out for the go soon.<br>
+      As of now, you can just do it manually using the checkbox mode and adding some codes whatsoever to simulate an option button.</td>
+  </tr>
+  <tr>
+    <td><strong>7/17/2006 7:54:52 AM: bob8works<br>
+      Galig m bro!<br>
+      5* for you.</strong></td>
+  </tr>
+  <tr>
+    <td>Ohh, at last. My fellow countrymen is what I've been waiting for to give me their opinions. Thanks pare...</td>
+  </tr>
+  <tr>
+    <td><p><strong>7/17/2006 8:35:35 AM: Riccardo Cohen<br>
+        Little Bug: When disabling button by itself (by clickking it), picture doesn't change to disabled.<br>
+        Also all other graphic effects doesn't draw. So we have a disabled button that looks like a normal button.<br>
+        You can see this very clear on a WindowsXP button.<br>
+        Example: need one button (TestButton) with this code...<br>
+        Sub TestButton_Click()<br>
+        TestButton.Enabled = False<br>
+        End sub<br>
+        You will see that button doesn't Redraw!!!<br>
+        Regards Riccardo<br>
+        </strong></p></td>
+  </tr>
+  <tr>
+    <td>This kind of bug reporting is what I prefer most for others, it contains enough details for me to speed things up when correcting bugs.<br>
+      It's fixed now. You can try it again on the demo form in the XP buttons frame.</td>
+  </tr>
+  <tr>
+    <td bgcolor="#0000FF"><span class="style1">End of file. Thanks everyone for giving me your comments and votes! Happy programming!!! -noel</span></td>
+  </tr>
+</table>
+</body>
+</html>

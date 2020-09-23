@@ -1,0 +1,29 @@
+Did you know that?
+
+-The ColorTheme property of the control is changing only the
+ button's BackColor. The control will do the rest of the job
+ in calculating colors for different parts and state of the button
+ which is a great benefit for everyone having hard time doing this.
+
+-You can modify different color attributes for the button
+ aside from the color properties available in the property browser
+ and the default colors automatically defined by the control.
+ You can do by using the OverrideColor procedure of the control.
+ Usage of procedure constants may differ from different button styles.
+
+-If you set an icon/picture larger than the control's drawing area,
+ the control will attempt to crop the image so that it will only
+ draw part of the image that is visible on the control which can help
+ to make thinks faster when using large images/bitmaps.
+
+-If you set an icon as the control's normal, hot, or down state picture
+ and set UseMaskColor to False, the control will (attempt to) use the
+ top-left pixel color of the icon to set transparent areas of the icon.
+
+-You can view useful descriptions assigned to every public properties
+ and procedures of the control on the object and property browser of
+ the vb ide. This information is what some custom control lacks of
+ when distributing their compiled versions or source projects.
+ This descriptions can be a great help not only for newbies but also
+ for everyone new to the control. Every custom control developers
+ should practice providing these descriptions for the benefit of us.

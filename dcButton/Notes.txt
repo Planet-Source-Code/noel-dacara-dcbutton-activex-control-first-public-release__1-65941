@@ -1,0 +1,19 @@
+First and for most, I would like to thank you for downloading this submission. Thanks!
+
+Now, here are some of delicate issues that a button must be aware of:
+
+1. Click the BUTTON-A as fast as you can. It should follow the up & down state of the button correctly as you click.
+
+2. Focus on a button. Hold the ALT button then press SPACEBAR without releasing the ALT button. The system menu should be displayed while the button goes to normal state and response to no event as the system menu is still in focus. (Esc to close the menu, Esc again to return focus to the window again)
+
+3. Focus on a button. Hold the SPACEBAR for a second (button should be in down state) then press any key. If you press ENTER it should trigger its click event. If you press an ARROW KEY, it should transfer focus to another control then trigger its click event. If you press a key not mentioned earlier, the button should return to normal or hot state without triggering a click event.
+
+4. Click and hold a button down, then move in & out the button. The button state should cycle up & down as the cursor enters & leave the button. For XP style button, the hot state border (red-orange) is drawn on mouse leave, and draws the focus state border (blue) when released outside the button.
+
+5. Focus on a button. Hold SPACEBAR down, then hold the same button using the left mouse button (w/o releasing the SPACEBAR). With both buttons held down, try releasing either of the two buttons (SPACEBAR or LEFT-MOUSE-BUTTON) but not both. The button should stay in down state unless you release both buttons that may induce the click event.
+
+6. On the same situation on issue #5 (w/ both SPACEBAR & LEFT-MOUSE-BUTTON being HELD DOWN on a button), move the cursor in and outside the button. When cursor is outside the control, the button should be in hot state and returns to down state as the cursor re-enters the button again or when released.
+
+7. Focus on a button, hold the SPACEBAR down. While button stays on down state, click anywhere on the window. If you click on a control, it may respond on the mouseover event but does not transfer its focus to the control. The button should draw to normal state on mouse down, draw the hot state on mouse move, and returns to down state when cursor is moved to the control or when released.
+
+Lastly, if you need to be sure, test this on real buttons like of VB's command button.

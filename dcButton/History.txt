@@ -1,0 +1,238 @@
+07.28.06
+ - Removed unused APIs in the declaration lists
+ - Added directives to specific API declaration used by some button styles so it will be excluded on compilation when style not used
+07.27.06
+ - Fixed double-click and hold bug when cursor moves, it draws hot state even if mouse button is still held down inside the button
+07.26.06
+ - No Updates
+07.25.06
+ - Removed focus border for Crystal, Mac, and MacOSx button styles to make it have smoother borders than it was before when focused
+ - The downside is that, you can no longer determine (visually...) what control is currently in focus unless you remember where it is
+ - I'm still finding other ways to handle this...any idea?
+ - Reuploaded on PSC updating recent and latest changes on the submission
+07.24.06
+ - No Updates
+07.23.06
+ - Trying to fix/resolve the problem reported by a user yesterday but I can't find it at the moment (still looking for more clues)...
+07.22.06
+ - Updated the submission on PSC
+ - Read more comments and some more minor bugs reported
+ - Feeling sad about the vote results :) It remains as it was, hehe it's okay. PSC is having problems about their voting system :)
+07.21.06
+ - Fixed: Now the control uses the top-left pixel color of the icon/picture as the default maskcolor when UseMaskColor is set False
+ - Fixed: Finally I can say the icon/picture drawing procedure is a great success on me which I have been having problems before :)
+ - Fixed: Text/caption & icon/picture centering and alignments defects on different circumstances - Should work fine now :)
+ - Fixed: Unused subclass message removed. WM_MOUSEMOVE message added but not used, sorry :)
+ - Fixed: Optimized Calculate procedure for more stable, faster, and accurate calculation
+ - Added: Fixed Bugs.htm file which contains the comments from different users giving comments & bug reports and my answers to them.
+07.20.06
+ - Fixed: Crash on UNLOAD from it's own event
+ - Fixed: Control does not update drawing to disabled state when set from its own click event
+ - Fixed: Problem when button is used within another usercontrol, it recognizes the usercontrol as its parent not the form
+ - Fixed: Crash problem when control is used on MDI forms or forms set as MDI Child
+ - Found: Crashes on close of MDI Form or MDI Child form
+07.19.06
+ - Comments arrived together with only a handful (as of now...) of bugs concerning the public
+ - Analyzing bugs is a bit difficult with less information about the defects (some experienced it while others don't)
+ - Fixed: "Subcript is out of range" error found on the PolylineEx procedure. Should be fixed by now...
+ - Updated the lite button versions about the bugs/defects as well
+07.13.06 - 07.18.06
+ - Waiting for comments after being released to the public last 07.12.06
+07.12.06
+ - Created the lite button versions (5 styles only) - Removed popup menu & special effects support for lite versions
+ - Fixed: Some minor bugs/defects
+07.11.06
+ - No updates
+07.10.06
+ - Final preparation for a first public release/distribution of the control (made some final checkups & debugging to the control)
+ - Added: XP toolbar button style
+ - Added: Option to exclude some feature from compilation using conditional compiler directives technique
+ - Fixed: Button sometimes does not update on MouseLeave after a popup menu has dismissed
+ - Fixed: Button sometimes draw the HOT state border particularly on XP style button on DOWN state usually after a menu is shown
+ - Fixed: Button seems to the draw wrong border color sometimes on other button styles when a popup menu is shown
+07.09.06
+ - Preparation for distribution of sources (checking sources for any possible defects/bugs on different circumstances)
+ - Fixed: Vertical text still uses the button's width to control the text that fits before it is drawn on the next line
+ - Found: Vertical text overlaps previous line and does not extend to the next line (feature is okay with text with no spaces)
+ - Found: Vertical text seems to go out-of-control when caption contains a space character and draws the text overlapping each other
+ - So for now: Vertical text feature has been cancelled coz' I got less time to first release tomorrow with a broad unfixed defect
+ - Sadly CaptionEffects will be out of service for now (Don't worry I'm still fixing it and hopefully will be okay on next release)
+ - Fixed: Picture for down state to use PictureOver if set and no PictureDown is specified
+ - Fixed: DrawIcon procedure seems to crop the picture a pixel from the top even though the control is large enough for the picture
+ - Fixed: Button does not restore display to normal on MouseUp outside the control after a menu has been dismissed
+07.08.06
+ - Changed the way to raise popup menus (now the control must need to be set to handle popup menus and unset it to restore events)
+ - When popup menu is set, some regular mouse & keyboard events are not sent to prevent user from distracting popup menu processes
+ - Fixed: Respond to appropriate popup menu display (show/close) on double-click
+ - Fixed: Control must respond to show the popup menu when an accesskey is pressed on ENTER or SPACEBAR keys
+ - Fixed: Control does not restore display on MouseLeave after a popup menu (triggered by an Accesskey/ENTER/SPACEBAR) is dismissed
+ - Fixed: Control does not correctly respond to MouseOver event after the popup menu (triggered by an Accesskey/ENTER) is dismissed
+ - Fixed: Sometimes the control remains on HOT state on MouseOver after the popup menu is dismissed by clicking outside the control
+07.07.06
+ - No updates (got other things to do)
+07.05.06
+ - Added: About property/procedure on the control - opens the default web browser to launch the url to the controls homepage
+ - Fixed: Defect found last 07.02.06 that draws an line/shade on egdes of the control when setting pictures on smaller buttons
+ - Fixed: Sometime the control retains the hot state on somewhere after dismissing the popup menu & the right-mouse button is used
+ - Found: Opera style button draws the hot state border on mouse down outside the control while spacebar is being held down
+07.04.06
+ - Fixed: The control now fully supports the popupmenu feature (it allows you to open & close the menu appropriately on mousedown)
+ - Notes: The popupmenu feature is intended or only works perfectly when called on the Mouse_Down event of the associated button
+07.03.06
+ - Fixed: I have finally found a way to restrict user from clicking/selecting other controls while spacebar is being held down
+ - Fixed: When SetCapture is called the current cursor is retained which will be a problem if cursor is over a textbox when called
+07.02.06
+ - Found: draws an ugly line on right-side edge of control when setting a picture somewhat larger than the control
+ - Fixed: does not update PictureOpacity on set of picture & remains zero(0), the picture is not shown then!
+ - Fixed: picture is not slightly centered on the control when no caption is specified
+ - Fixed: icon/picture and the caption overlaps the button border in standard button style
+07.01.06
+ - Added: MacOSx button style which I got an idea from a MacHome magazine (2005 issue) - No guarantee that it'll look the same :)
+ - Added: 3 predefined button shapes to simulate connected/continuous buttons - not shapes actually though
+06.30.06
+ - More optimization done to drawing procedures, thus, to the control itself
+ - Improved disabled button drawing for Crystal & Mac styles - before it was drawn flat
+06.29.06
+ - Added: popupmenu alignments (top & right alignments to the control)
+ - Fixed: Mac & Crystal button style drawing procedure to adopt overridden colors for display particularly in drawing gradients
+ - Fixed: control event defect - still triggers the click event on right click
+ - Fixed: XP button style drawing procedure for checkbox mode enabled button(s) - removed focus & highlight borders on checked state
+06.28.06
+ - No updates (need rest)
+06.27.06
+ - Still has fever but still manages to program and provide some additional updates to the control :)
+ - Now uses the system's hand cursor if set. Before, I just usually set the MouseIcon property to a standby hand icon resource
+ - More defects found on other button style drawing procedures - Draws HOT state when SPACEBAR is held down and a key is pressed
+ - Fixed: defects on Mac & Crystal button style drawing procedure previously found and also fixed newly detected bug on other styles
+ - Fixed: button shine effect drawing procedure (previous routines seems to be limited on one style - mac)
+06.26.06
+ - No updates (got fever)
+06.25.06
+ - More optimization done to drawing procedures (Ex. change percent arguments to its decimal equivalents to avoid more divisions)
+ - Added: custom picture size option aside from the predefined picture sizes (use PictureSizeH or PictureSizeW properties)
+ - Fixed: control to avoid drawing the control when hidden (when visible property set to false)
+ - Fixed: another drawing concern - it updates the button twice on release of mouse button or spacebar key, but not now :)
+06.24.06
+ - Added: Picture opacity effect to blend pictures to the button
+ - Found: Some defects on Mac & Crystal button drawing procedure - Draws HOT state when SPACEBAR is held down and a key is pressed
+ - Fixed: Some defects on triggering of events - Does not respont to ENTER key while button is held down using SPACEBAR
+ - Fixed: One more instruction that may have leaked GDI resource particularly on DrawIcon procedure again!
+06.23.06
+ - Added: built-in hand pointer support
+ - Added: vertical text (caption) support - two directions (reading from top-to-bottom and bottom-to-top)
+ - Added: unicode text support
+ - Added: minimum button height and width specification (minimum size of 15x15 pixels)
+ - Fixed: vertical text problem of caption not aligned at the center without an icon or with an icon aligned behind text
+ - Fixed: vertical text problem in conjunction of an icon/picture with specific alignment (DT_CENTER affects output, so I remove it)
+06.22.06
+ - Added: Popup menu support with a default alignment to the control
+ - Fixed: Retains the down button state as the menu is shown and restores button state (hot/normal) as the menu closes/exits.
+06.17.06 - 06.21.06
+ - No updates
+06.16.06
+ - Added: Crystal button style based on an Award Winning submission on PSC particularly the CandyButton (nice job!)
+ - Just making a visual replica of the button (no codes copied, just the idea on how to draw it) while adding more improvements :)
+06.13.06 - 06.15.06
+ - No updates
+06.12.06
+ - Added: Support for tracking of mouse leave event on older systems such as Windows® 95 with Internet Explorer 3.0 or later
+ - Now the control can be used on Windows® 95 with IE 3.0 (before it was Win98 and later) - Based only on API requirements
+ - Problem found when loading large icon/picture and the button is clicked (IDE Crashes!!!)
+ - Problem found when a large icon/picture is loaded on a smaller button (causes a noticeable delay)
+ - Problem found when a large icon/picture is loaded or a long caption is set, image/text overlaps button border
+ - Fixed: Crash problem when loading large icon/picture (just a simple increase in array by half of the existing boundary solves it)
+ - Fixed: All button style drawing procedures to draw icon & caption before drawing the borders to prevent overlapping the border
+ - Fixed: DrawIcon procedure to crop icon/picture drawing area not visible in the button (only if picture size is set to normal)
+ - Fixed: DrawIcon procedure to skip bit-by-bit image processing when not really neccessary (See code for more details)
+06.11.06
+ - Added: Mac button style based on my existing Mac display theme for Windows® NT/XP
+ - Added: Picture down and over properties
+ - Added: Toolbox bitmap to control (image from the mac button style itself)
+ - Fixed: Picture problems - pictures must be the same in size or set PictureSize to custom formats (16x16, 24x24, 32x32, 48x48)
+ - Fixed: Some memory leaks on some existing drawing procedures
+06.10.06
+ - Optimized all drawing procedures for more faster and flexible productivity (frequently used instructions to separate procedures)
+ - Optimized all button style drawing procedures to blend colors in (mostly for button borders) when changing the backcolor
+ - Added: OverrideColor procedure to customize buttons colors not available on control property (intended for advance/critic users)
+06.09.06
+ - Rewrite Opera button drawing procedure to support changing of background color
+ - Added: Descriptions to public properties, procedures, and events (Tools->Procedure Attributes...)
+ - Descriptions are now displayed in VB IDE's Properties Window and Object Browser.
+06.08.06
+ - Fixed: Minor bug/defect in drawing of transparent areas of an icon when UseMaskColor is set to False
+ - Fixed: Minor bug/defect in drawing of predefined picture size. Does not resize the picture correctly
+ - Optimized icon/picture drawing procedure for faster output and removed all possible memory leaks
+06.07.06
+ - Rewrite parts of XP button drawing procedure to support changing of background color
+06.06.06
+ - Finalized picture support for all buttons styles (hopefully...)
+ - Added: Support for picture and icon special effects (None, Embossed, Engraved, Shadowed)
+06.05.06
+ - Added: Support for predefined picture size (Normal, 16x16, 24x24, 32x32, 48x48)
+ - Added: BehindText picture alignment
+06.04.06
+ - Added: support for picture alignments
+ - Rescan drawing procedure for icon/picture to fix some minor bugs
+06.03.06
+ - Rearranged some parts of the code for more convinience and readability to ease debugging
+ - Fixed: serious bug/defect on triggering of events (does not draw correct state when using launches a msgbox on an event)
+06.02.06
+ - Added: MS Office toolbar button styles (Office XP and Office 2003 version)
+06.01.06
+ - Added: Zoom/magnification display on demo form
+ - Paused more updates to the button to continue creating the magnifier as a separate program. (Zoom-It Screen Utility)
+05.31.06
+ - Fixed: Minor bug/problem for xp style buttons
+ - Added: OPERA BROWSER button style (visit http://www.opera.com/ to download the fastest browser ever)
+05.30.06
+ - Perform finalization of xp button styles
+ - Rewrite procedures in drawing of picture for different button states with the aid of API-Guide (http://www.allapi.net)
+05.29.06
+ - Added: Blue xp button style
+ - Added: Olive-green xp button style
+ - Added: Silver xp button style
+ - Control still does not fully support adding of pictures/icons (still buggy...)
+05.28.06
+ - Temporarily discarded OPTION BUTTON MODE...having problems on how to implement it
+ - Rewrite parts of the code again to support discarding of unused button styles on final compilation using DIRECTIVES
+ - I almost forgot, I still wasn't able support adding of pictures for the button yet.
+05.27.06
+ - Day off...got a date :)
+05.26.06
+ - Fixed: minor problems on triggering of usercontrol events
+ - Rewrite parts of the code to support multiple button styles
+ - Captured snapshots of XP buttons for BLUE,OLIVEGREEN, and SILVER color scheme.
+ - Added: more usercontrol properties like STYLE, VALUE, and MODE (command button, checkbox, option button mode)
+05.25.06
+ - Fixed: some problems detected on double-click. Does not draw up and down button state on faster clicks
+ - Fixed: some problems detected when user hold the left mouse button down then ALT-TAB to other windows
+05.24.06
+ - At the moment, only the Yahoo button style is working. XP buttons currently on wait mode
+ - Added drawing of button captions, gradient background, and manipulating of color values
+ - Having problems in changing of caption font properties (draws correctly on IDE, not on RUNTIME)
+05.23.06
+ - Problems in getting mouse events work properly when cursor is moved in/out the button while the left mouse button is held down
+ - Downloaded the SelfSub2.1 by Paul Caton (paul_caton@hotmail.com)
+ - Discard Timer control, moved to subclassing to eliminate/lessen problem in triggering of mouse events
+05.22.06
+ - I've noticed & downloaded the Yahoo button image on their site (http://www.yahoo.com) and got excited on it
+ - Started planning what to do about the image and getting my API's ready for the heavy coding
+ - Did I mention, I was using the great API-Guide and API-Viewer (http://www.allapi.net) which helps me with all these API stuffs
+ - Getting curious on how to get the button corners transparent using API
+05.21.06
+ - Oh my...oh my...triggering of events like a real button really make my head ached!!!
+ - Having problems in getting the DEFAULT button property to work/draw correctly
+ - Still no visual button effects (Debug.Print helps me debugging...)
+05.20.06
+ - Adding usercontrol properties using VB's ActiveX Control Interface Wizard but removed generated comments
+ - Having problems in getting the accesskey to work
+ - Bugs detected from getaccesskey procedure
+05.19.06
+ - Not yet done on making events work as they should (getting irritated...)
+ - Using Timer control at the moment in triggering the mouse leave event
+ - Using Debug.Print to know if the cursor is over/out the button (no visual button effects yet)
+05.18.06
+ - Started creating the control from scratch (dj thing?) and based from my own crazy imagination
+ - Making comparison to the standard command button on triggering of events correctly
+ - Getting headache on this compare thing!!! ...but it's worth doing for ..it should be :)
+ - Coding the usercontrol for triggering/implementing of button events

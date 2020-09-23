@@ -1,0 +1,190 @@
+' Before this release, the control was used to support vertical text/caption until
+' I found some bugs/defects that I still can't fix because of my limited time.
+' Just wait until the next release for some updates maybe on this feature, See yah :)
+
+' Unfixed: Feature seems not to work well with text that extends to a multiple line caption
+
+' The following codes are taken from the usercontrol prior to cancellation of the feature
+' You may find some headers describing where and what part of the code it was taken
+' A comment labelled "SOME CODES HERE" means it was a code which is not from this feature
+
+' API Declaration ==========================================================================
+
+' Create vertical font
+Private Declare Function CreateFontIndirect Lib "gdi32.dll" Alias "CreateFontIndirectA" (ByRef lpLogFont As LOGFONT) As Long
+    Private Const FW_BOLD       As Long = 700
+    Private Const FW_NORMAL     As Long = 400
+    Private Const LF_FACESIZE   As Long = 32
+    Private Const LOGPIXELSY    As Long = 90
+    Private Type LOGFONT
+        lfHeight                As Long
+        lfWidth                 As Long
+        lfEscapement            As Long
+        lfOrientation           As Long
+        lfWeight                As Long
+        lfItalic                As Byte
+        lfUnderline             As Byte
+        lfStrikeOut             As Byte
+        lfCharSet               As Byte
+        lfOutPrecision          As Byte
+        lfClipPrecision         As Byte
+        lfQuality               As Byte
+        lfPitchAndFamily        As Byte
+        lfFaceName(LF_FACESIZE) As Byte
+    End Type
+Private Declare Function GetDeviceCaps Lib "gdi32.dll" (ByVal hDC As Long, ByVal nIndex As Long) As Long
+Private Declare Function MulDiv Lib "kernel32.dll" (ByVal nNumber As Long, ByVal nNumerator As Long, ByVal nDenominator As Long) As Long
+
+' Enums ====================================================================================
+
+Public Enum eCaptionEffects
+    eceNormal    ' Normal (left-to-right)
+    eceVertical1 ' Bottom-to-top reading
+    eceVertical2 ' Top-to-bottom reading
+End Enum
+
+#If False Then
+    ' Trick to preserve casing of these variables when used in VB IDE
+    Private eceNormal, eceVertical1, eceVertical2
+#End If
+
+' Properties ===============================================================================
+
+Public Property Get CaptionEffect() As eCaptionEffects
+'   Returns/sets a value whether to enable the vertical caption effect.
+    CaptionEffect = m_tButtonProperty.CaptionFx
+    
+End Property
+
+Public Property Let CaptionEffect(Value As eCaptionEffects)
+    m_tButtonProperty.CaptionFx = Value
+    Me.Refresh
+    PropertyChanged "CaptionEffect"
+    
+End Property
+
+' Declaration from tButtonProperties Type ==================================================
+
+    CaptionFx   As eCaptionEffects
+
+' Declaration from tButtonSettings Type ====================================================
+
+    EffectFont  As LOGFONT          ' LOGFONT structure of vertical caption
+
+' PropertyBag Read/Write ===================================================================
+
+        m_tButtonProperty.CaptionFx = .ReadProperty("CaptionEffect", 0)
+
+        .WriteProperty "CaptionEffect", m_tButtonProperty.CaptionFx, 0
+
+' Procedure ================================================================================
+
+Private Function StdFontToLOGFONT( _
+        Optional Font As StdFont, _
+        Optional hDC As Long, _
+        Optional ExcludeFaceName As Boolean) As LOGFONT
+'   Converts an OLE StdFont to an API LOGFONT structure
+'   Based on vbAccelerator's pOLEFontToLogFont (http://www.vbaccelerator.com)
+    
+    If (Font Is Nothing) Then Set Font = UserControl.Font
+    If (hDC = 0) Then hDC = UserControl.hDC
+    
+    If (Not ExcludeFaceName) Then
+    Dim i As Long
+    Dim FaceName() As Byte                          '
+    Dim FontName As String                          '
+        FontName = Font.Name                        ' Get name of font
+        FaceName = StrConv(FontName, vbFromUnicode) ' Convert font name from unicode
+        While (i < Len(FontName))                   '
+            StdFontToLOGFONT.lfFaceName(i) = FaceName(i)
+            i = i + 1                               '
+        Wend                                        ' We can't assign directly
+    End If                                          ' to a static array, so
+                                                    ' we do it manually
+    With StdFontToLOGFONT                           '
+        .lfCharSet = Font.Charset                   '
+        .lfHeight = -MulDiv(Font.Size, GetDeviceCaps(hDC, LOGPIXELSY), 72)
+        .lfItalic = Font.Italic
+        .lfStrikeOut = Font.Strikethrough
+        .lfUnderline = Font.Underline
+        If (Font.Bold) Then
+            .lfWeight = FW_BOLD
+        Else
+            .lfWeight = FW_NORMAL
+        End If
+    End With
+    
+End Function
+
+' Part of CalculateRects Procedure =========================================================
+
+        ' SOME CODES HERE
+        
+        If (Not m_tButtonProperty.CaptionFx = eceNormal) Then
+            Dim hFont As Long
+            
+            With m_tButtonSettings.EffectFont       '
+                m_tButtonSettings.EffectFont = StdFontToLOGFONT(UserControl.Font, hDC, True)
+                If (m_tButtonProperty.CaptionFx = eceVertical1) Then
+                    .lfEscapement = 90 * 10         ' 90°
+                Else                                '
+                    .lfEscapement = 270 * 10        ' 270°
+                End If                              '
+                .lfOrientation = .lfEscapement      ' Although it's still ok w/o this
+            End With                                ' but just being sure
+                                                    '
+            hFont = CreateFontIndirect(m_tButtonSettings.EffectFont)
+            hFont = SelectObject(hDC, hFont)        '
+                                                    ' Create vertical font
+            SetRect tr, 0, 0, bh, bw                ' Select it to the control
+        Else                                        '
+            SetRect tr, 0, 0, bw, bh                '
+        End If                                      '
+                                                    '
+        ' SOME CODES HERE                           '
+                                                    '
+        If (Not m_tButtonProperty.CaptionFx = eceNormal) Then
+            SetRect tr, 0, 0, tr.Bottom, tr.Right   ' DrawText still returns the
+                                                    ' width & height of text the
+                                                    ' same on a horizontal text,
+                                                    ' So we change them to fix it
+                                                    '
+            DeleteObject SelectObject(hDC, hFont)   ' Restore original font
+        End If                                      ' Delete indirect font object
+                                                    '
+    ' SOME CODES HERE                               '
+
+    '               | 1
+    '               | R    90°
+    '               | E
+    '               | V
+    '     ----------o----------
+    '             V | NORMAL
+    '      270°   E |
+    '             R |
+    '             2 |
+                                                    '
+    If (tn = 0) Then Exit Sub                       ' Next instructions are needed only
+                                                    ' if caption is specified
+    Select Case m_tButtonProperty.CaptionFx         '
+        Case eceVertical1                           ' Apply additional fixes to
+            OffsetRect tr, 0, (tr.Bottom - tr.Top)  ' draw text on expected area
+        Case eceVertical2                           '
+            OffsetRect tr, (tr.Right - tr.Left), 0  '
+    End Select                                      '
+                                                    '
+' Part of DrawCaption Procedure ============================================================
+
+    ' SOME CODES HERE
+                                                '
+    If (Not m_tButtonProperty.CaptionFx = eceNormal) Then
+        Dim hFont As Long                       '
+            hFont = CreateFontIndirect(m_tButtonSettings.EffectFont)
+            hFont = SelectObject(hDC, hFont)    '
+    End If                                      ' Create vertical font if requested
+                                                '
+    ' SOME CODES HERE                           '
+                                                '
+    If (Not hFont = 0) Then                     ' Restore original font
+        DeleteObject SelectObject(hDC, hFont)   ' Delete indirect font object
+    End If                                      '

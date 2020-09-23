@@ -1,0 +1,19 @@
+Dacara Software License
+Version 1.0
+Copyright © 2003-2006 Noel A. Dacara
+
+Usage of source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+1. Any end-user documentation included with the software package, must include the following acknowledgement:
+   "This product includes software developed by Noel A. Dacara (noeldacara@hotmail.com)."
+   Alternately, this can appear in the software itself wherever such third-party acknowledgements normally appear.
+
+2. The name "Dacara" must not be used to endorse or promote products derived from this software without prior authorization.
+   You can visit the site or email the author at the address provided herein to do so.
+
+3. Products derived from this software may not be called "Dacara", nor may "Dacara" appear in their name, without prior permission from the author.
+
+THIS SOFTWARE IS PROVIDED "AS IS" AND WITHOUT ANY EXPRESSED OR IMPLIED WARRANTY OF ANY KIND. IN NO EVENT SHALL THE AUTHOR BE HELD LIABLE FOR ANY DAMAGES (INCLUDING BUT NOT LIMITED TO LOSS OF DATA OR PROFITS; OR EVEN BUSINESS INTERRUPTION) ARISING FROM USE OF THIS SOFTWARE.
+
+For more info please visit www.dacarasoftwares.cjb.net or email at noeldacara@hotmail.com
+All Rights Reserved.

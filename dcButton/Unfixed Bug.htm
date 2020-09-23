@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Unfixed Bug Problem</title>
+<style type="text/css">
+<!--
+body,td,th {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+.style1 {color: #FFFFFF}
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: none;
+}
+a:active {
+	text-decoration: none;
+}
+-->
+</style>
+</head>
+<body>
+<table width="100%" border="1" align="center" cellpadding="5" cellspacing="0" bordercolor="#FFFFFF">
+  <tr>
+    <td bgcolor="#FF0000"><span class="style1">UNFIXED CRASH PROBLEM</span></td>
+  </tr>
+  <tr>
+    <td><p>I need help! Bug problem. As I was correcting the MDIChild bug issue reported by ubt1 and seems to have corrected it, another problem occurs, crash problem! As I analyzed my code, I find nothing that could interrupt or cause the subclasser to get into trouble. It went all fine until terminating (or unsubclassing) the WM_NCACTIVATE message I added to subclass the parent form. I tried almost anything until I got a crazy idea of why not testing the subclass examples itself provided by Paul Caton on his SelfSub v2.1 submission particularly the pSample.vbp project on \Samples\uSelfSub\Simple directory.</p>
+      <p>The following are the steps seconds from disaster :)</p>
+      <p>15. Add MDI form to the project then set it as the Startup object.<br>
+        14. Set the existing fMain form to be its MDIChild.<br>
+        13. On MDI Form_Load() procedure I added the line &quot;fMain.Show&quot; (without the quotes of course) only.<br>
+        12. I test run it and it went fine.<br>
+        11. Next I forgot, on the uSample.ctl usercontrol code particularly on the UserControl_ReadProperties() procedure...<br>
+        10. I added the line &quot;sc_AddMsg .hwnd, &amp;H86&quot; (without the quotes) as the last code inside the UserControl.Parent WITH structure<br>
+        09: By the way, &amp;H86 is the API constant value for WM_NCACTIVATE<br>
+        08. The procedure should look like this below:</p>
+      <blockquote>
+        <p> Private Sub UserControl_ReadProperties(PropBag As PropertyBag)<br>
+          #OTHER CODES TRUNCATED#<br>
+          <br>
+          With UserControl.Parent<br>
+          sc_Subclass .hwnd<br>
+          sc_AddMsg .hwnd, WM_MOVING<br>
+          sc_AddMsg .hwnd, WM_SIZING<br>
+          sc_AddMsg .hwnd, WM_EXITSIZEMOVE<br>
+          sc_AddMsg .hwnd, &amp;H86 ' WM_NCACTIVATE<br>
+          End With<br>
+          <br>
+          End Sub</p>
+      </blockquote>
+      <p>07. Then I run it again. It went fine again! (Almost losing hope, I got another hint.)<br>
+        06. I created another instance of the uSample usercontrol on the fMain form.<br>
+        05. I run it again and close the form by form's close button or the MDI's close button but still it went fine.<br>
+        04. Got really prostrated, I added another instance of the uSample usercontrol on the fMain form.<br>
+        03. The form (fMain) now contains a total of 3 uSample usercontrol objects.<br>
+        02. Now I run it.<br>
+        01. It went fine again!!!<br>
+        00. Feeling really helpless, I closed the MDI form using the close button of the MDI form. Got yah!!! VB crashes!!!<br>
+        <br>
+        I open it again and follow the same steps again to be sure that I wasn't having mistakes and still it crashes.<br>
+        <br>
+        Now I'm quite confident that it wasn't my code that causes the ugly crash. The subclasser itself has the problem.<br>
+        I need help from Paul Caton who is the original author of the great self-subclasser or anyone who can to solve this problem.</p>
+      <p>And hey before I forgot, previous versions (not sure what version) of Paul Caton's subclasser does not experience this problem.<br>
+        <br>
+        To make things easier, I incuded the sample project on this submission. It is located on the <a href="SelfSub/">this</a> folder.<br>
+      </p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#FF0000"><a href="http://www.Planet-Source-Code.com/vb/scripts/ShowCode.asp?txtCodeId=64867&lngWId=1"><span class="style1">Link to Paul Caton's Award-Winning SelfSub v2.1 here...</span></a></td>
+  </tr>
+</table>
+</body>
+</html>
